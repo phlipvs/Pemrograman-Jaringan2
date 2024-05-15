@@ -21,7 +21,8 @@ g. connme : ketika client menginputkan command tersebut, maka hubungan socket cl
 
 **1. Command Ls**
 
-```def ls(conn, directory='.'):
+```
+def ls(conn, directory='.'):
     parser = argparse.ArgumentParser(description='List files in a directory')
     parser.add_argument('directory', type=str, nargs='?', default='.')
     args = parser.parse_args()
@@ -52,7 +53,8 @@ Fungsi tersebut memiliki tujuan untuk mengirim daftar file dan folder dalam sebu
 
 **2. Command rm**
 
-```def remove_file(filename):
+```
+def remove_file(filename):
     if os.path.exists(filename):
         os.remove(filename)
         return "File {} telah dihapus.".format(filename)
@@ -69,7 +71,8 @@ Outputnya:
 
 **3. Command Upload**
 
-```def upload(conn, filename, upload_dir='.'):
+```
+def upload(conn, filename, upload_dir='.'):
 
      with open(filename, 'wb') as f:
          data = conn.recv(1024)
@@ -87,7 +90,8 @@ Outputnya :
 
 **4. Command Download**
 
-```def download(conn, filename):
+```
+def download(conn, filename):
     if os.path.exists(filename):
         with open(filename, 'rb') as f:
             data = f.read(1024)
@@ -105,7 +109,8 @@ Output :
 
 **5. Command Size**
 
-```def get_file_size(filename):
+```
+def get_file_size(filename):
     if os.path.exists(filename):
         size_bytes = os.path.getsize(filename)
         return str(size_bytes)
@@ -119,7 +124,8 @@ Output :
 
 **6. Command Byebye**
 
-```elif command[0] == 'byebye':
+```
+elif command[0] == 'byebye':
             response = "Goodbye!"
             conn.sendall(response.encode('utf-8'))
             conn.close()
@@ -132,7 +138,8 @@ Output :
 
 **7. Command Connme**
 
-```elif command[0] == 'connme':
+```
+elif command[0] == 'connme':
             response = "Connection established successfully."
             conn.sendall(response.encode('utf-8'))
             continue  
@@ -153,7 +160,8 @@ Output :
 ----
 #### Bagian yang diubah ada di bagian 'Def Upload'
 
-```def upload(conn, filename, upload_dir='.'):
+```
+def upload(conn, filename, upload_dir='.'):
 
     # with open(filename, 'wb') as f:
     #     data = conn.recv(1024)
